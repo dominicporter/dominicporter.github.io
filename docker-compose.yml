@@ -1,0 +1,17 @@
+services:
+  app:
+    build: .
+    container_name: app
+    restart: unless-stopped
+    expose:
+      - "3000"
+    environment:
+      VIRTUAL_HOST: extinctionsucks.help,www.extinctionsucks.help
+      VIRTUAL_PORT: 3000
+      LETSENCRYPT_HOST: extinctionsucks.help,www.extinctionsucks.help
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
