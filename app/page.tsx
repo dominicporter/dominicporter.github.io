@@ -66,7 +66,7 @@ export default function Home() {
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
-              href="mailto:hello@dominicporter.dev?subject=Freelance%20engineering%20enquiry"
+              href="mailto:hello@extinctionsucks.help?subject=Freelance%20engineering%20enquiry"
               className="inline-flex items-center justify-center rounded-full bg-forest-900 px-6 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-forest-700 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:ring-offset-2"
             >
               Get in touch
@@ -149,22 +149,27 @@ export default function Home() {
           <p className="mt-4 max-w-2xl text-lg leading-8 text-white/75">
             Send a short note about the product, team and problem you are trying to solve. I will reply with next steps if it looks like a fit.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
-              href="mailto:hello@dominicporter.dev?subject=Freelance%20engineering%20enquiry"
+              href="mailto:hello@extinctionsucks.help?subject=Freelance%20engineering%20enquiry"
               className="inline-flex items-center justify-center rounded-full bg-earth-50 px-6 py-3 text-sm font-semibold text-forest-900 transition hover:bg-earth-100 focus:outline-none focus:ring-2 focus:ring-earth-200 focus:ring-offset-2 focus:ring-offset-forest-900"
             >
-              Get in touch
+              Contact
             </a>
-            <a
-              href="https://www.linkedin.com/"
-              className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/60"
-            >
-              LinkedIn
+            <a className="text-sm font-medium text-white/70 transition hover:text-white" href="mailto:hello@extinctionsucks.help?subject=Freelance%20engineering%20enquiry">
+              hello@extinctionsucks.help
             </a>
           </div>
+          <p className="mt-6 text-sm leading-6 text-white/50">Work is delivered via Extinction Sucks Ltd (UK).</p>
         </div>
       </section>
+
+      <footer className="border-t border-forest-100 py-8 text-sm text-forest-900/55">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <p>© Dominic Porter</p>
+          <p>Operated by Extinction Sucks Ltd</p>
+        </div>
+      </footer>
     </main>
   );
 }
