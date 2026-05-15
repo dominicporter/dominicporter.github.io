@@ -13,12 +13,45 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(220, 233, 223, 0.75), transparent 32rem),
-    linear-gradient(180deg, #f7f5ef 0%, #fffdf8 42%, #f7f5ef 100%);
-  color: #193425;
+    linear-gradient(120deg, rgba(247, 245, 239, 0.92), rgba(239, 234, 222, 0.78)),
+    radial-gradient(circle at top left, rgba(213, 201, 171, 0.48), transparent 34rem),
+    radial-gradient(circle at 90% 12%, rgba(178, 196, 179, 0.36), transparent 30rem),
+    #f2eee4;
+  color: #25312b;
+}
+
+body::before {
+  background-image: radial-gradient(rgba(69, 84, 73, 0.09) 0.7px, transparent 0.7px);
+  background-size: 22px 22px;
+  content: "";
+  inset: 0;
+  opacity: 0.45;
+  pointer-events: none;
+  position: fixed;
+  z-index: -20;
 }
 
 ::selection {
   background: #d5c9ab;
   color: #193425;
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-sm font-semibold uppercase tracking-[0.2em] text-forest-600;
+  }
+
+  .section-shell {
+    @apply relative border-t border-moss-200/60;
+  }
+
+  .section-shell::before {
+    background: linear-gradient(90deg, transparent, rgba(213, 201, 171, 0.52), transparent);
+    content: "";
+    height: 1px;
+    left: 10%;
+    position: absolute;
+    right: 10%;
+    top: -1px;
+  }
 }
