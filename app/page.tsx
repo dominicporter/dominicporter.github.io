@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const engagements = [
   {
     title: "Fractional CTO support",
@@ -95,23 +97,15 @@ export default function Home() {
         </div>
 
         <aside className="relative rounded-[2.25rem] border border-white/75 bg-gradient-to-br from-earth-50/95 via-earth-100/70 to-moss-100/70 p-4 shadow-soft backdrop-blur">
-          <div className="overflow-hidden rounded-[1.75rem] border border-white/80 bg-slate-800 text-earth-50 shadow-inner-soft">
-            <div className="relative min-h-[24rem] bg-[linear-gradient(155deg,rgba(28,49,39,0.18),rgba(28,49,39,0.72)),radial-gradient(circle_at_72%_18%,rgba(232,207,152,0.58),transparent_8rem),linear-gradient(135deg,#8a9b88_0%,#51665a_46%,#263f35_100%)] p-7">
-              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-[linear-gradient(170deg,transparent_18%,rgba(235,230,216,0.28)_18%,rgba(235,230,216,0.28)_34%,transparent_34%),linear-gradient(150deg,transparent_36%,rgba(25,52,37,0.48)_36%,rgba(25,52,37,0.48)_62%,transparent_62%)]" />
-              <div className="relative flex h-full min-h-[20rem] flex-col justify-between">
-                <div className="w-fit rounded-full border border-earth-100/30 bg-earth-50/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-earth-100 backdrop-blur">
-                  Field notes
-                </div>
-                <div>
-                  <p className="max-w-xs text-2xl font-semibold leading-tight tracking-tight">
-                    Experienced in messy systems, moving teams and practical delivery.
-                  </p>
-                  <p className="mt-4 max-w-sm text-sm leading-6 text-earth-50/78">
-                    A quiet visual nod to outdoor, expedition-style work: prepared, observant and comfortable with uncertainty.
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="relative overflow-hidden rounded-[1.75rem] border border-white/80 shadow-inner-soft" style={{ aspectRatio: "4/5" }}>
+            <Image
+              src="/dom.jpg"
+              alt="Dominic Porter"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 45vw"
+              priority
+            />
           </div>
           <div className="absolute -bottom-6 left-8 right-8 rounded-3xl border border-white/80 bg-earth-50/95 p-5 text-sm leading-6 text-slate-700 shadow-layer backdrop-blur">
             <span className="font-semibold text-forest-800">Focus:</span> climate tech, sustainability organisations, NGOs and tech-for-good teams that need dependable engineering.
