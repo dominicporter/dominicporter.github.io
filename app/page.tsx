@@ -159,6 +159,9 @@ export default function Home() {
             <a className="text-sm font-medium text-white/70 transition hover:text-white" href="mailto:hello@extinctionsucks.help?subject=Freelance%20engineering%20enquiry">
               hello@extinctionsucks.help
             </a>
+            <a className="text-sm font-medium text-white/70 transition hover:text-white" href="https://linkedin.com/in/porterdom" target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
           </div>
           <p className="mt-6 text-sm leading-6 text-white/50">Work is delivered via Extinction Sucks Ltd (UK).</p>
         </div>
@@ -168,6 +171,7 @@ export default function Home() {
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <p>© Dominic Porter</p>
           <p>Operated by Extinction Sucks Ltd</p>
+          <a className="transition hover:text-forest-900/80" href="https://linkedin.com/in/porterdom" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </footer>
     </main>
