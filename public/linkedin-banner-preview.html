@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LinkedIn banner PNG preview and download</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      body {
+        margin: 0;
+        background: #0f1720;
+        color: #edf2f7;
+      }
+
+      main {
+        display: grid;
+        gap: 1rem;
+        min-height: 100vh;
+        place-items: center;
+        padding: 2rem;
+      }
+
+      .panel {
+        display: grid;
+        gap: 1rem;
+        width: min(100%, 1100px);
+      }
+
+      canvas {
+        width: 100%;
+        height: auto;
+        border: 1px solid rgb(255 255 255 / 0.14);
+        border-radius: 12px;
+        box-shadow: 0 24px 70px rgb(0 0 0 / 0.34);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      a[download] {
+        border-radius: 999px;
+        background: #e8eef7;
+        color: #07111d;
+        font-weight: 700;
+        padding: 0.8rem 1.1rem;
+        text-decoration: none;
+      }
+
+      p {
+        margin: 0;
+        color: #b9c5d4;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="panel" aria-labelledby="page-title">
+        <div>
+          <h1 id="page-title">LinkedIn banner preview</h1>
+          <p>Open this file in a browser, then use the button to download the rendered 1584 × 396 PNG.</p>
+        </div>
+        <canvas id="banner" width="1584" height="396" aria-label="LinkedIn banner preview"></canvas>
+        <div class="actions">
+          <a id="download" download="linkedin-banner.png" href="#">Download PNG</a>
+          <p>The climate-stripe visual is rendered as a subtle background texture behind the text.</p>
+        </div>
+      </section>
+    </main>
+    <script>
+      const canvas = document.getElementById("banner");
+      const ctx = canvas.getContext("2d");
+      const width = canvas.width;
+      const height = canvas.height;
+      const graphTop = 78;
+
+      const headline = "Fractional CTO & Principal Engineer";
+      const subheadline = "Helping climate & mission-driven organisations build, scale & stabilise digital products";
+      const smallLine = "Senior hands-on engineering leadership across complex systems and startups";
+
+      const palette = {
+        deepBlue: "#08306b",
+        blue: "#2171b5",
+        midBlue: "#6baed6",
+        paleBlue: "#c6dbef",
+        nearWhite: "#f7fbff",
+        paleWarm: "#fee0d2",
+        coral: "#fb6a4a",
+        red: "#de2d26",
+        deepRed: "#a50f15",
+      };
+
+      function colorFor(value) {
+        if (value < -1.25) return palette.deepBlue;
+        if (value < -0.85) return palette.blue;
+        if (value < -0.45) return palette.midBlue;
+        if (value < -0.12) return palette.paleBlue;
+        if (value < 0.16) return palette.nearWhite;
+        if (value < 0.45) return palette.paleWarm;
+        if (value < 0.85) return palette.coral;
+        if (value < 1.25) return palette.red;
+        return palette.deepRed;
+      }
+
+      function drawClimateStripes() {
+        const years = 174;
+        const stripeWidth = width / years;
+
+        ctx.save();
+        ctx.globalAlpha = 0.2;
+        for (let i = 0; i < years; i += 1) {
+          const t = i / (years - 1);
+          const longTermWarming = -0.76 + t ** 2.22 * 2.35;
+          const oscillation = Math.sin(i * 0.27) * 0.33 + Math.sin(i * 0.91 + 0.8) * 0.19;
+          const lateAcceleration = t > 0.72 ? (t - 0.72) * 1.05 : 0;
+          ctx.fillStyle = colorFor(longTermWarming + oscillation + lateAcceleration);
+          ctx.fillRect(i * stripeWidth, graphTop, stripeWidth + 1, height - graphTop);
+        }
+        ctx.restore();
+      }
+
+      function drawGradientOverlays() {
+        const textFade = ctx.createLinearGradient(0, 0, width, 0);
+        textFade.addColorStop(0, "rgb(7 17 29 / 0.96)");
+        textFade.addColorStop(0.46, "rgb(7 17 29 / 0.84)");
+        textFade.addColorStop(0.72, "rgb(7 17 29 / 0.38)");
+        textFade.addColorStop(1, "rgb(7 17 29 / 0.10)");
+        ctx.fillStyle = textFade;
+        ctx.fillRect(0, 0, width, height);
+
+        const topFade = ctx.createLinearGradient(0, 0, 0, 112);
+        topFade.addColorStop(0, "rgb(17 19 21 / 0.95)");
+        topFade.addColorStop(1, "rgb(17 19 21 / 0.42)");
+        ctx.fillStyle = topFade;
+        ctx.fillRect(0, 0, width, 112);
+      }
+
+      function drawText() {
+        ctx.textBaseline = "alphabetic";
+        ctx.shadowColor = "rgb(0 0 0 / 0.24)";
+        ctx.shadowBlur = 6;
+        ctx.shadowOffsetY = 2;
+
+        ctx.font = "700 60px Inter, Arial, sans-serif";
+        ctx.fillStyle = "#ffffff";
+        ctx.fillText(headline, 116, 181);
+
+        ctx.font = "400 28px Inter, Arial, sans-serif";
+        ctx.fillStyle = "#e8eef7";
+        ctx.fillText(subheadline, 118, 241);
+
+        ctx.font = "400 22px Inter, Arial, sans-serif";
+        ctx.fillStyle = "#b9c5d4";
+        ctx.fillText(smallLine, 118, 298);
+
+        ctx.shadowColor = "transparent";
+        ctx.font = "400 32px Inter, Arial, sans-serif";
+        ctx.fillStyle = "rgb(255 255 255 / 0.18)";
+        ctx.fillText("Temperature change in Edinburgh since 1850", 28, 47);
+      }
+
+      function drawBanner() {
+        ctx.fillStyle = "#0d1722";
+        ctx.fillRect(0, 0, width, height);
+        ctx.fillStyle = "#252728";
+        ctx.fillRect(0, 0, width, graphTop);
+        drawClimateStripes();
+        drawGradientOverlays();
+        drawText();
+        document.getElementById("download").href = canvas.toDataURL("image/png");
+      }
+
+      if (document.fonts) {
+        document.fonts.ready.then(drawBanner);
+      } else {
+        drawBanner();
+      }
+    </script>
+  </body>
+</html>
